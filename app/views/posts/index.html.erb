@@ -3,8 +3,11 @@
 <ul>
 <% @posts.each do |p| %>
 	<li>
-	<%= p.description %>
-	<%= link_to "Go!", p.link %>
+		
+			<div><%= p.description %></div>
+			<div>User: <%= p.user.name %> </div>
+
+			<%= link_to "Go!", p.link %>
 
 
 		<ul>

@@ -1,7 +1,13 @@
 class PostsController < ApplicationController
 
 	def index
-		@posts = Post.includes(:comments).all
+		#render text: params.to_s
+		user_id = params[:user_id]
+		if user_id
+			@posts = Post.includes(:comments).where(user_id: user_id)
+		else
+			@posts = Post.includes(:comments).all
+		end
 	end
 
 	def new
@@ -16,6 +22,12 @@ class PostsController < ApplicationController
 		else
 			render :new
 		end
+	end
+
+	def mine
+		
+		@posts = current_user.posts
+		render :index
 	end
 
 end
