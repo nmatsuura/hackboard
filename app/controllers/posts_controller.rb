@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+	before_filter :authenticate_user!
+
 	def index
 		#render text: params.to_s
 		user_id = params[:user_id]
@@ -15,7 +17,10 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		@post = Post.new(params[:post])
+
+		@post = current_user.posts.build(params[:post])
+
+		# @post = Post.new(params[:post])
 		if @post.valid?
 			@post.save
 			redirect_to posts_path
@@ -25,7 +30,6 @@ class PostsController < ApplicationController
 	end
 
 	def mine
-		
 		@posts = current_user.posts
 		render :index
 	end

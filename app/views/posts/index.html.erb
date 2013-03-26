@@ -3,11 +3,13 @@
 <ul>
 <% @posts.each do |p| %>
 	<li>
-		
-			<div><%= p.description %></div>
-			<div>User: <%= p.user.name %> </div>
+			<div><%= link_to p.description, post_path(p) %></div>
+			<div>User: <%= p.user.email %> </div>
 
 			<%= link_to "Go!", p.link %>
+			<%#= link_to "Show", post_path(p) %>
+
+			<%= image_tag p.image.url(:thumb) %>
 
 
 		<ul>
