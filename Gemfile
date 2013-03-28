@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
-gem 'devise'
+gem 'devise', '2.2.3'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'paperclip'
