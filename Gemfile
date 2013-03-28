@@ -6,6 +6,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'paperclip'
+gem 'aws-sdk'
 
 
 # Bundle edge Rails instead:
