@@ -51,6 +51,13 @@ Hackboard::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.default_url_options = {
+     :host => "hackboard.herokuapp.com",
+     :port => 80
+
+    }
+
+
   # Enable threaded mode
   # config.threadsafe!
 

@@ -1,5 +1,20 @@
 <h1>All posts</h1>
 
+<%#= form_tag posts_path, method: :get do %>
+	<%#= label_tag :description, "Search" %>
+	<%#= text_field_tag :description, params[:description] %>
+	<%#= submit_tag "Search" %>
+<%# end %>
+
+<%= search_form_for @q do |f| %>
+	<%= f.label :description_cont, "Search Description" %>
+	<%= f.text_field :description_cont %>
+	
+	<%= f.label :link_cont, "Search Link" %>
+	<%= f.text_field :link_cont %>
+	<%= f.submit "Submit" %>
+<% end %>
+
 <div class = 'row'>
 <% @posts.each_with_index do |p, i| %>
 
@@ -15,6 +30,8 @@
 			<%#= link_to "Show", post_path(p) %>
 
 			<%= image_tag p.image.url(:thumb) %>
+
+			<div><%= byline(p) %> </div>
 
 
 		<ul>

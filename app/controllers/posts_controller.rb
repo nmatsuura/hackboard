@@ -2,14 +2,23 @@ class PostsController < ApplicationController
 
 	before_filter :authenticate_user!
 
+	
+
 	def index
 		#render text: params.to_s
 		user_id = params[:user_id]
 		if user_id
 			@posts = Post.includes(:comments).where(user_id: user_id)
 		else
-			@posts = Post.includes(:comments).all
+			@posts = Post.includes(:comments)
 		end
+		# if params[:description]
+		# 	@posts = @posts.where("description LIKE ?", 
+		# 		"%#{params[:description]}%")
+		# end
+		@q = @posts.search(params[:q])
+		@posts = @q.result
+
 	end
 
 	def new
